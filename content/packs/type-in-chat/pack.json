@@ -1,0 +1,84 @@
+{
+  "id": "type-in-chat",
+  "slug": "type-in-chat",
+  "language": "fr",
+  "title": "Type in chat — Joe Bart",
+  "description": "Pack communautaire · joshieboi15",
+  "category": "Mème",
+  "thumbnail": "thumbnail.png",
+  "scenes": [
+    {
+      "id": "main",
+      "title": "Type in chat — Joe Bart",
+      "duration": 19.2,
+      "thumbnail": "thumbnail.png",
+      "video": "video.mp4",
+      "backing": "backing.mp3",
+      "characters": [
+        {
+          "id": "joe",
+          "name": "Joe",
+          "color": "#D9645B"
+        }
+      ],
+      "lines": [
+        {
+          "id": "line_001",
+          "characterId": "joe",
+          "text": "Are you going to complain the entire time?",
+          "start": 0,
+          "end": 2.15,
+          "prompt": "prompt_01.mp3"
+        },
+        {
+          "id": "line_002",
+          "characterId": "joe",
+          "text": "Type in chat",
+          "start": 2.273,
+          "end": 3.606,
+          "prompt": "prompt_02.mp3"
+        },
+        {
+          "id": "line_003",
+          "characterId": "joe",
+          "text": "Type in chat.",
+          "start": 3.783,
+          "end": 5.4,
+          "prompt": "prompt_03.mp3"
+        },
+        {
+          "id": "line_004",
+          "characterId": "joe",
+          "text": "Because I know you're hearing me.",
+          "start": 5.465,
+          "end": 7.415,
+          "prompt": "prompt_04.mp3"
+        },
+        {
+          "id": "line_005",
+          "characterId": "joe",
+          "text": "Type in chat and respond to what I was saying.",
+          "start": 7.507,
+          "end": 11.307,
+          "prompt": "prompt_05.mp3"
+        },
+        {
+          "id": "line_006",
+          "characterId": "joe",
+          "text": "Type in CHAT and respond to what I was saying.",
+          "start": 11.668,
+          "end": 15.268,
+          "prompt": "prompt_06.mp3"
+        },
+        {
+          "id": "line_007",
+          "characterId": "joe",
+          "text": "Type in CHATTTT",
+          "start": 15.739,
+          "end": 17.872,
+          "prompt": "prompt_07.mp3"
+        }
+      ]
+    }
+  ]
+}

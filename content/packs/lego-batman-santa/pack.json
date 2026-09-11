@@ -1,0 +1,308 @@
+{
+  "id": "lego-batman-santa",
+  "slug": "lego-batman-santa",
+  "language": "fr",
+  "title": "Lego Batman & Santa vs Goons",
+  "description": "Pack communautaire · KingTheSaiyan",
+  "category": "Action",
+  "thumbnail": "thumbnail.png",
+  "scenes": [
+    {
+      "id": "main",
+      "title": "Lego Batman & Santa vs Goons",
+      "duration": 48.39,
+      "thumbnail": "thumbnail.png",
+      "video": "video.mp4",
+      "backing": "backing.mp3",
+      "characters": [
+        {
+          "id": "thug",
+          "name": "Thug",
+          "color": "#D9645B"
+        },
+        {
+          "id": "grunt-2",
+          "name": "Grunt 2",
+          "color": "#3BA7F5"
+        },
+        {
+          "id": "grunt-3",
+          "name": "Grunt 3",
+          "color": "#3FB950"
+        },
+        {
+          "id": "grunt-4",
+          "name": "Grunt 4",
+          "color": "#C24FE0"
+        },
+        {
+          "id": "grunt-5",
+          "name": "Grunt 5",
+          "color": "#FFC23D"
+        },
+        {
+          "id": "grunt-6",
+          "name": "Grunt 6",
+          "color": "#E67E22"
+        },
+        {
+          "id": "grunt",
+          "name": "Grunt",
+          "color": "#1ABC9C"
+        },
+        {
+          "id": "santa-claus",
+          "name": "Santa Claus",
+          "color": "#9B59B6"
+        },
+        {
+          "id": "batman",
+          "name": "Batman",
+          "color": "#D9645B"
+        }
+      ],
+      "lines": [
+        {
+          "id": "line_001",
+          "characterId": "thug",
+          "text": "Alright, you grunts!",
+          "start": 0.02,
+          "end": 0.697,
+          "prompt": "prompt_01.mp3"
+        },
+        {
+          "id": "line_002",
+          "characterId": "thug",
+          "text": "So as you may have guessed from the very explosion, it appears we have another Bat problem.",
+          "start": 1.23,
+          "end": 5.472,
+          "prompt": "prompt_02.mp3"
+        },
+        {
+          "id": "line_003",
+          "characterId": "grunt-2",
+          "text": "Speak Gibberish",
+          "start": 5.492,
+          "end": 5.742,
+          "prompt": "prompt_03.mp3"
+        },
+        {
+          "id": "line_004",
+          "characterId": "grunt-3",
+          "text": "Speak Gibberish",
+          "start": 5.492,
+          "end": 5.742,
+          "prompt": "prompt_04.mp3"
+        },
+        {
+          "id": "line_005",
+          "characterId": "grunt-4",
+          "text": "Speak Gibberish",
+          "start": 5.492,
+          "end": 5.742,
+          "prompt": "prompt_05.mp3"
+        },
+        {
+          "id": "line_006",
+          "characterId": "grunt-5",
+          "text": "Speak Gibberish",
+          "start": 5.492,
+          "end": 5.742,
+          "prompt": "prompt_06.mp3"
+        },
+        {
+          "id": "line_007",
+          "characterId": "grunt-6",
+          "text": "Speak Gibberish",
+          "start": 5.492,
+          "end": 5.742,
+          "prompt": "prompt_07.mp3"
+        },
+        {
+          "id": "line_008",
+          "characterId": "grunt",
+          "text": "Speak Gibberish",
+          "start": 5.51,
+          "end": 9.542,
+          "prompt": "prompt_08.mp3"
+        },
+        {
+          "id": "line_009",
+          "characterId": "thug",
+          "text": "Shut your traps!. Now,",
+          "start": 9.562,
+          "end": 10.687,
+          "prompt": "prompt_09.mp3"
+        },
+        {
+          "id": "line_010",
+          "characterId": "thug",
+          "text": "It's come to my attention that in the past, alot of you have just been pointing your guns at Batman, but not actually-- firing.",
+          "start": 10.96,
+          "end": 17.336,
+          "prompt": "prompt_10.mp3"
+        },
+        {
+          "id": "line_011",
+          "characterId": "grunt",
+          "text": "That's not true boss, last time the Bats was here I totally fired my gun at him. Like Bang!",
+          "start": 17.356,
+          "end": 21.832,
+          "prompt": "prompt_11.mp3"
+        },
+        {
+          "id": "line_012",
+          "characterId": "thug",
+          "text": "Yeah, after he already grabbed your hand forcing you to shoot at the ground and then what did he do",
+          "start": 21.886,
+          "end": 25.45,
+          "prompt": "prompt_12.mp3"
+        },
+        {
+          "id": "line_013",
+          "characterId": "grunt",
+          "text": "He uh.. hit me in the face with my own gun.",
+          "start": 25.661,
+          "end": 27.407,
+          "prompt": "prompt_13.mp3"
+        },
+        {
+          "id": "line_014",
+          "characterId": "thug",
+          "text": "He hit you in the face with your own gun, yeah exactly, this is what I'm talkin about!",
+          "start": 27.427,
+          "end": 30.506,
+          "prompt": "prompt_14.mp3"
+        },
+        {
+          "id": "line_015",
+          "characterId": "thug",
+          "text": "Now this time, i want you all to take a good ten steps back. Point your guns, and actually shoot Batman, okay?",
+          "start": 30.539,
+          "end": 36.647,
+          "prompt": "prompt_15.mp3"
+        },
+        {
+          "id": "line_016",
+          "characterId": "grunt-2",
+          "text": "Agree",
+          "start": 36.668,
+          "end": 36.918,
+          "prompt": "prompt_16.mp3"
+        },
+        {
+          "id": "line_017",
+          "characterId": "grunt-2",
+          "text": "Agree",
+          "start": 36.668,
+          "end": 36.918,
+          "prompt": "prompt_17.mp3"
+        },
+        {
+          "id": "line_018",
+          "characterId": "grunt-3",
+          "text": "Agree",
+          "start": 36.668,
+          "end": 36.918,
+          "prompt": "prompt_18.mp3"
+        },
+        {
+          "id": "line_019",
+          "characterId": "grunt-4",
+          "text": "Agree",
+          "start": 36.668,
+          "end": 36.918,
+          "prompt": "prompt_19.mp3"
+        },
+        {
+          "id": "line_020",
+          "characterId": "grunt-5",
+          "text": "Agree",
+          "start": 36.668,
+          "end": 36.918,
+          "prompt": "prompt_20.mp3"
+        },
+        {
+          "id": "line_021",
+          "characterId": "grunt-6",
+          "text": "Agree",
+          "start": 36.668,
+          "end": 37.522,
+          "prompt": "prompt_21.mp3"
+        },
+        {
+          "id": "line_022",
+          "characterId": "grunt",
+          "text": "Alright Boss!",
+          "start": 37.542,
+          "end": 38.121,
+          "prompt": "prompt_22.mp3"
+        },
+        {
+          "id": "line_023",
+          "characterId": "grunt",
+          "text": "Die from having your neck broke",
+          "start": 38.163,
+          "end": 39.225,
+          "prompt": "prompt_23.mp3"
+        },
+        {
+          "id": "line_024",
+          "characterId": "grunt-2",
+          "text": "Scream in fear",
+          "start": 40.57,
+          "end": 40.82,
+          "prompt": "prompt_24.mp3"
+        },
+        {
+          "id": "line_025",
+          "characterId": "grunt-4",
+          "text": "Scream in fear",
+          "start": 40.57,
+          "end": 40.82,
+          "prompt": "prompt_25.mp3"
+        },
+        {
+          "id": "line_026",
+          "characterId": "grunt-5",
+          "text": "Scream in fear",
+          "start": 40.57,
+          "end": 40.82,
+          "prompt": "prompt_26.mp3"
+        },
+        {
+          "id": "line_027",
+          "characterId": "grunt-6",
+          "text": "Scream in fear",
+          "start": 40.57,
+          "end": 40.82,
+          "prompt": "prompt_27.mp3"
+        },
+        {
+          "id": "line_028",
+          "characterId": "grunt-3",
+          "text": "Scream while trying to run away then get knocked out",
+          "start": 40.573,
+          "end": 41.727,
+          "prompt": "prompt_28.mp3"
+        },
+        {
+          "id": "line_029",
+          "characterId": "santa-claus",
+          "text": "You've all been VERY naughty boys this year!",
+          "start": 41.794,
+          "end": 44.73,
+          "prompt": "prompt_29.mp3"
+        },
+        {
+          "id": "line_030",
+          "characterId": "batman",
+          "text": "They know.. they just don't care!",
+          "start": 45.035,
+          "end": 47.89,
+          "prompt": "prompt_30.mp3"
+        }
+      ]
+    }
+  ]
+}
