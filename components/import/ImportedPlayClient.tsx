@@ -3,8 +3,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import { useLocale, useTranslations } from "next-intl";
-import { Link } from "@/i18n/navigation";
-import { Button } from "@/components/ui/button";
+import { ButtonLink } from "@/components/ui/button-link";
 import { StudioClosed } from "@/components/layout/ComingSoon";
 import { StudioApp } from "@/components/studio/StudioApp";
 import {
@@ -87,9 +86,9 @@ export function ImportedPlayClient() {
       <main className="mx-auto max-w-xl px-4 py-16 text-center">
         <h1 className="font-display text-3xl">{t("missingTitle")}</h1>
         <p className="mt-3 text-muted">{error}</p>
-        <Button asChild className="mt-6">
-          <Link href="/">{t("backHome")}</Link>
-        </Button>
+        <ButtonLink href="/" className="mt-6">
+          {t("backHome")}
+        </ButtonLink>
       </main>
     );
   }

@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { Link } from "@/i18n/navigation";
-import { Button } from "@/components/ui/button";
+import { ButtonLink } from "@/components/ui/button-link";
 import { localeLanguageAlternates, localizedUrlPath, routing, type Locale } from "@/i18n/routing";
 import { getSiteUrl } from "@/lib/utils";
 
@@ -82,12 +81,12 @@ export default async function HowToPage({ params }: Props) {
       <p className="mt-6 text-lg leading-relaxed text-muted">{t("lead")}</p>
 
       <div className="mt-8 flex flex-wrap gap-3">
-        <Button asChild size="lg">
-          <Link href="/#play">{t("cta")}</Link>
-        </Button>
-        <Button asChild variant="outline" size="lg">
-          <Link href="/packs">{t("ctaSecondary")}</Link>
-        </Button>
+        <ButtonLink href="/#play" size="lg">
+          {t("cta")}
+        </ButtonLink>
+        <ButtonLink href="/packs" variant="outline" size="lg">
+          {t("ctaSecondary")}
+        </ButtonLink>
       </div>
 
       <Section title={t("needTitle")}>
@@ -139,12 +138,10 @@ export default async function HowToPage({ params }: Props) {
       </Section>
 
       <div className="mt-12 flex flex-wrap gap-3">
-        <Button asChild>
-          <Link href="/#play">{t("cta")}</Link>
-        </Button>
-        <Button asChild variant="outline">
-          <Link href="/packs">{t("ctaSecondary")}</Link>
-        </Button>
+        <ButtonLink href="/#play">{t("cta")}</ButtonLink>
+        <ButtonLink href="/packs" variant="outline">
+          {t("ctaSecondary")}
+        </ButtonLink>
       </div>
     </main>
   );

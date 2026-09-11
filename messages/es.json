@@ -227,9 +227,12 @@
     "scoreEnergy": "Energía",
     "scoreBusy": "Calculando la puntuación…",
     "watch": "Ver mi doblaje",
-    "export": "Descargar el vídeo",
-    "exporting": "Exportando… {percent}%",
+    "export": "Descargar WebM",
+    "exportMp4": "Descargar MP4",
+    "exporting": "Grabando… {percent}%",
+    "converting": "Convirtiendo a MP4… {percent}%",
     "exportError": "La exportación falló. Reintenta con esta pestaña en primer plano.",
+    "exportMp4Error": "Falló la conversión a MP4. Prueba WebM, o mantén esta pestaña abierta e inténtalo de nuevo.",
     "another": "Jugar otro pack",
     "back": "Volver a los packs",
     "backToStart": "Inicio",
@@ -296,15 +299,15 @@
       "Dubmates está pensado para divertirse con amigos: noches de party, Impro absurdo y clips para compartir — no para alojar una biblioteca de películas o series con copyright."
     ],
     "contactTitle": "Contacto",
-    "contactMeta": "Contacta con Dubmates: producto o avisos de copyright. contact@dubmates.com o copyright@dubmates.com.",
+    "contactMeta": "Contacta con Dubmates: producto o avisos de copyright. contact@dubmates.org o copyright@dubmates.org.",
     "contactParagraphs": [
       "¿Preguntas sobre el producto, los packs o el sitio? Envíanos un mensaje breve. Leemos todo, aunque la respuesta puede tardar unos días.",
       "Para copyright / DMCA, usa la dirección de copyright con la URL, una descripción de la obra y tus datos de contacto."
     ],
     "contactGeneralLabel": "General",
     "contactCopyrightLabel": "Copyright / DMCA",
-    "contactEmail": "contact@dubmates.com",
-    "copyrightEmail": "copyright@dubmates.com",
+    "contactEmail": "contact@dubmates.org",
+    "copyrightEmail": "copyright@dubmates.org",
     "privacyTitle": "Política de privacidad",
     "privacyMeta": "Cómo Dubmates trata el micro, las tomas locales y la analítica. Las grabaciones se quedan en tu dispositivo.",
     "privacyParagraphs": [
@@ -325,7 +328,7 @@
       "Podemos actualizar estos términos. Seguir usando el servicio tras un cambio implica aceptarlos. El servicio se ofrece «tal cual», sin garantía de disponibilidad continua."
     ],
     "dmcaTitle": "Política DMCA",
-    "dmcaMeta": "Cómo enviar un aviso de copyright a Dubmates: copyright@dubmates.com con URL, descripción y datos.",
+    "dmcaMeta": "Cómo enviar un aviso de copyright a Dubmates: copyright@dubmates.org con URL, descripción y datos.",
     "dmcaParagraphs": [
       "Dubmates no ofrece una biblioteca de películas o series con copyright. Los jugadores pueden importar sus propios packs; no reclamamos esos materiales de terceros.",
       "Si crees que un contenido accesible a través de Dubmates infringe tus derechos, envía un aviso a la dirección siguiente.",

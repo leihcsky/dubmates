@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { localizedUrlPath, routing } from "@/i18n/routing";
+import { localizedUrlPath, seoLocales } from "@/i18n/routing";
 import { getSiteUrl } from "@/lib/utils";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -16,7 +16,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ];
   const entries: MetadataRoute.Sitemap = [];
 
-  for (const locale of routing.locales) {
+  for (const locale of seoLocales) {
     for (const path of staticPaths) {
       const localized = localizedUrlPath(locale, path);
       entries.push({

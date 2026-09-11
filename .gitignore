@@ -39,8 +39,9 @@ yarn-error.log*
 # vercel
 .vercel
 
-# ogv.js wasm assets (copied from node_modules via postinstall)
+# ogv.js / ffmpeg.wasm assets (copied from node_modules via postinstall)
 /public/ogv
+/public/ffmpeg
 
 # local pack conversion scratch
 /tmp

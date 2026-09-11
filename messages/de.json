@@ -227,9 +227,12 @@
     "scoreEnergy": "Energie",
     "scoreBusy": "Score wird berechnet…",
     "watch": "Meinen Dub ansehen",
-    "export": "Video herunterladen",
-    "exporting": "Export läuft… {percent}%",
+    "export": "WebM herunterladen",
+    "exportMp4": "MP4 herunterladen",
+    "exporting": "Aufnahme… {percent}%",
+    "converting": "Konvertiere zu MP4… {percent}%",
     "exportError": "Export fehlgeschlagen. Versuch’s nochmal und lass den Tab im Vordergrund.",
+    "exportMp4Error": "MP4-Konvertierung fehlgeschlagen. Versuch WebM, oder lass den Tab offen und erneut versuchen.",
     "another": "Anderes Pack spielen",
     "back": "Zurück zu den Packs",
     "backToStart": "Start",
@@ -296,15 +299,15 @@
       "Dubmates ist für Spaß mit Freunden gedacht: Party-Nächte, absurde Impro-Takes, teilbare Clips — nicht als Bibliothek urheberrechtlich geschützter Filme oder Serien."
     ],
     "contactTitle": "Kontakt",
-    "contactMeta": "Dubmates kontaktieren: Produktfragen oder Copyright. contact@dubmates.com oder copyright@dubmates.com.",
+    "contactMeta": "Dubmates kontaktieren: Produktfragen oder Copyright. contact@dubmates.org oder copyright@dubmates.org.",
     "contactParagraphs": [
       "Fragen zu Produkt, Packs oder der Website? Schreib kurz. Wir lesen alles, Antworten können ein paar Tage dauern.",
       "Für Copyright-/DMCA-Anfragen nutze die Copyright-Adresse mit URL, Werkbeschreibung und Kontaktdaten."
     ],
     "contactGeneralLabel": "Allgemein",
     "contactCopyrightLabel": "Copyright / DMCA",
-    "contactEmail": "contact@dubmates.com",
-    "copyrightEmail": "copyright@dubmates.com",
+    "contactEmail": "contact@dubmates.org",
+    "copyrightEmail": "copyright@dubmates.org",
     "privacyTitle": "Datenschutzerklärung",
     "privacyMeta": "Wie Dubmates Mikro, lokale Takes und Analytics behandelt. Aufnahmen bleiben standardmäßig auf dem Gerät.",
     "privacyParagraphs": [
@@ -325,7 +328,7 @@
       "Wir können diese Bedingungen aktualisieren. Weiternutzung nach Änderungen gilt als Zustimmung. Der Dienst wird „wie besehen“ ohne Garantie ständiger Verfügbarkeit bereitgestellt."
     ],
     "dmcaTitle": "DMCA-Richtlinie",
-    "dmcaMeta": "Copyright-Meldung an Dubmates: copyright@dubmates.com mit URL, Beschreibung und Kontaktdaten.",
+    "dmcaMeta": "Copyright-Meldung an Dubmates: copyright@dubmates.org mit URL, Beschreibung und Kontaktdaten.",
     "dmcaParagraphs": [
       "Dubmates bietet keine Bibliothek geschützter Filme oder Serien. Spieler können eigene Packs importieren; wir beanspruchen dieses Drittmaterial nicht.",
       "Glaubst du, dass über Dubmates verfügbares Material deine Rechte verletzt, sende eine Meldung an die folgende Adresse.",

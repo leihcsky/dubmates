@@ -9,6 +9,12 @@ export const studioLocales = ["en", "fr"] as const;
 /** Locales shown in the header language switcher (hide unfinished ones). */
 export const switcherLocales = ["en", "fr"] as const;
 
+/**
+ * Locales declared in hreflang / sitemap.
+ * Keep in sync with finished public experiences; add es/de when those ship.
+ */
+export const seoLocales = ["en", "fr"] as const;
+
 export function isStudioLocale(locale: string): locale is (typeof studioLocales)[number] {
   return (studioLocales as readonly string[]).includes(locale);
 }
@@ -31,11 +37,12 @@ export function localizedUrlPath(locale: string, path = "") {
 
 export function localeLanguageAlternates(site: string, path = "") {
   const suffix = path.startsWith("/") || path === "" ? path : `/${path}`;
-  return {
-    en: `${site}${suffix || ""}`,
-    fr: `${site}/fr${suffix}`,
-    es: `${site}/es${suffix}`,
-    de: `${site}/de${suffix}`,
+  const languages: Record<string, string> = {
     "x-default": `${site}${suffix || ""}`,
-  } as const;
+  };
+  for (const locale of seoLocales) {
+    const localized = localizedUrlPath(locale, path);
+    languages[locale] = `${site}${localized === "/" ? "" : localized}`;
+  }
+  return languages;
 }

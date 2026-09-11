@@ -2,8 +2,8 @@
 
 import { useEffect, useId, useState } from "react";
 import { useTranslations } from "next-intl";
-import { Link } from "@/i18n/navigation";
 import { Button } from "@/components/ui/button";
+import { ButtonLink } from "@/components/ui/button-link";
 import { formatDuration } from "@/lib/utils";
 import { getPackDuration, isPackPlayable } from "@/lib/packs";
 import type { DubPack } from "@/lib/pack-types";
@@ -65,9 +65,9 @@ export function PackCard({
               >
                 {t("preview")}
               </Button>
-              <Button asChild className="w-full sm:flex-1">
-                <Link href={`/?pack=${pack.slug}`}>{t("playPack")}</Link>
-              </Button>
+              <ButtonLink href={`/?pack=${pack.slug}`} className="w-full sm:flex-1">
+                {t("playPack")}
+              </ButtonLink>
             </div>
           ) : (
             <Button disabled className="w-full" variant="surface">

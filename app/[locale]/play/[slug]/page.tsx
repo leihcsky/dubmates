@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { Link } from "@/i18n/navigation";
-import { Button } from "@/components/ui/button";
 import { StudioClosed } from "@/components/layout/ComingSoon";
 import { StudioApp } from "@/components/studio/StudioApp";
+import { ButtonLink } from "@/components/ui/button-link";
 import { isStudioLocale, type Locale } from "@/i18n/routing";
 import { formatDuration } from "@/lib/utils";
 import { getPackBySlug, getSceneById, isPackPlayable, resolvePack } from "@/lib/packs";
@@ -42,14 +41,17 @@ export default async function PlayPage({ params, searchParams }: Props) {
         <ul className="mt-8 space-y-3">
           {resolved.scenes.map((scene) => (
             <li key={scene.id}>
-              <Button asChild className="w-full justify-between" variant="outline" size="lg">
-                <Link href={`/play/${pack.slug}?scene=${scene.id}`}>
-                  <span>{scene.title}</span>
-                  <span className="text-sm font-medium text-muted">
-                    {formatDuration(scene.duration)}
-                  </span>
-                </Link>
-              </Button>
+              <ButtonLink
+                href={`/play/${pack.slug}?scene=${scene.id}`}
+                className="w-full justify-between"
+                variant="outline"
+                size="lg"
+              >
+                <span>{scene.title}</span>
+                <span className="text-sm font-medium text-muted">
+                  {formatDuration(scene.duration)}
+                </span>
+              </ButtonLink>
             </li>
           ))}
         </ul>

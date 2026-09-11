@@ -3,8 +3,8 @@
 import { Suspense, useEffect, useMemo, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { useLocale, useTranslations } from "next-intl";
-import { Link } from "@/i18n/navigation";
 import { Button } from "@/components/ui/button";
+import { ButtonLink } from "@/components/ui/button-link";
 import { SceneVideo, type SceneVideoHandle } from "@/components/studio/SceneVideo";
 import { WaveformCompare } from "@/components/studio/WaveformCompare";
 import { track } from "@/lib/analytics";
@@ -12,7 +12,7 @@ import { recordOnce, requestMicrophone } from "@/lib/audio/recorder";
 import { speakLine } from "@/lib/audio/speech";
 import { createToneWav } from "@/lib/audio/tone";
 import { getTakes, saveTake } from "@/lib/db/takes";
-import { exportDub } from "@/lib/export/render";
+import { downloadBlob, exportDub } from "@/lib/export/render";
 import { playDub, type MixHandle } from "@/lib/playback/mix";
 import { scoreDub, type DubScoreBreakdown } from "@/lib/scoring/dub-score";
 import type { ResolvedPack, ResolvedScene } from "@/lib/pack-types";
@@ -122,7 +122,9 @@ function StudioAppInner({
   const [stream, setStream] = useState<MediaStream | null>(null);
   const [micError, setMicError] = useState<string | null>(null);
   const [exportProgress, setExportProgress] = useState<number | null>(null);
+  const [exportStage, setExportStage] = useState<"recording" | "converting" | null>(null);
   const [exportError, setExportError] = useState<string | null>(null);
+  const [cachedWebm, setCachedWebm] = useState<{ fileBase: string; blob: Blob } | null>(null);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [waveProgress, setWaveProgress] = useState(0);
   const [score, setScore] = useState<DubScoreBreakdown | null>(null);
@@ -147,7 +149,9 @@ function StudioAppInner({
     setIndex(0);
     setPhase("line");
     setExportProgress(null);
+    setExportStage(null);
     setExportError(null);
+    setCachedWebm(null);
     setScore(null);
     setWaveProgress(0);
     setDubMode("follow");
@@ -466,25 +470,69 @@ function StudioAppInner({
     track("watch_dub", { slug: pack.slug });
   }
 
-  async function handleExport() {
+  const exportFileBase = `dubmates-${pack.slug}-${scene.id}`;
+
+  useEffect(() => {
+    setCachedWebm(null);
+  }, [takes, scene.id, pack.slug]);
+
+  async function renderWebm(onProgress: (ratio: number) => void) {
+    if (cachedWebm?.fileBase === exportFileBase) {
+      onProgress(1);
+      return cachedWebm.blob;
+    }
+    const blob = await exportDub({
+      videoUrl: scene.videoUrl,
+      videoMime: scene.videoMime,
+      duration: scene.duration,
+      lines: scene.lines,
+      takes,
+      backingUrl: scene.backingUrl,
+      fileBase: exportFileBase,
+      onProgress,
+    });
+    setCachedWebm({ fileBase: exportFileBase, blob });
+    return blob;
+  }
+
+  async function handleExportWebm() {
     setExportError(null);
+    setExportStage("recording");
     setExportProgress(0);
     try {
-      await exportDub({
-        videoUrl: scene.videoUrl,
-        videoMime: scene.videoMime,
-        duration: scene.duration,
-        lines: scene.lines,
-        takes,
-        backingUrl: scene.backingUrl,
-        fileBase: `dubmates-${pack.slug}-${scene.id}`,
-        onProgress: (value) => setExportProgress(Math.round(value * 100)),
-      });
+      const blob = await renderWebm((value) => setExportProgress(Math.round(value * 100)));
+      downloadBlob(blob, `${exportFileBase}.webm`);
       setExportProgress(null);
+      setExportStage(null);
     } catch {
       setExportError(t("exportError"));
       setExportProgress(null);
-      track("export_failure", { slug: pack.slug });
+      setExportStage(null);
+      track("export_failure", { slug: pack.slug, format: "webm" });
+    }
+  }
+
+  async function handleExportMp4() {
+    setExportError(null);
+    setExportStage("recording");
+    setExportProgress(0);
+    let stage: "recording" | "converting" = "recording";
+    try {
+      const webm = await renderWebm((value) => setExportProgress(Math.round(value * 55)));
+      stage = "converting";
+      setExportStage("converting");
+      const { convertWebmToMp4 } = await import("@/lib/export/to-mp4");
+      const mp4 = await convertWebmToMp4(webm, (value) =>
+        setExportProgress(55 + Math.round(value * 45)),
+      );
+      downloadBlob(mp4, `${exportFileBase}.mp4`);
+      setExportProgress(null);
+      setExportStage(null);
+    } catch {
+      setExportError(stage === "converting" ? t("exportMp4Error") : t("exportError"));
+      setExportProgress(null);
+      setExportStage(null);
+      track("export_failure", { slug: pack.slug, format: "mp4" });
     }
   }
 
@@ -637,26 +685,35 @@ function StudioAppInner({
             {exportError ? <p className="text-sm text-danger">{exportError}</p> : null}
             {exportProgress !== null ? (
               <p className="font-semibold text-primary">
-                {t("exporting", { percent: exportProgress })}
+                {exportStage === "converting"
+                  ? t("converting", { percent: exportProgress })
+                  : t("exporting", { percent: exportProgress })}
               </p>
             ) : null}
             <div className="flex flex-wrap gap-2">
               <Button onClick={() => void watchDub()}>{t("watch")}</Button>
               <Button
-                variant="gold"
-                onClick={() => void handleExport()}
+                variant="outline"
+                onClick={() => void handleExportWebm()}
                 disabled={exportProgress !== null}
               >
                 {t("export")}
+              </Button>
+              <Button
+                variant="gold"
+                onClick={() => void handleExportMp4()}
+                disabled={exportProgress !== null}
+              >
+                {t("exportMp4")}
               </Button>
               {onChangePack ? (
                 <Button variant="outline" onClick={onChangePack}>
                   {t("another")}
                 </Button>
               ) : (
-                <Button asChild variant="outline">
-                  <Link href="/packs">{t("another")}</Link>
-                </Button>
+                <ButtonLink href="/packs" variant="outline">
+                  {t("another")}
+                </ButtonLink>
               )}
               {onExit ? (
                 <Button variant="ghost" onClick={onExit}>

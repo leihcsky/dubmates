@@ -8,11 +8,15 @@
     "start": "next start",
     "lint": "eslint",
     "copy-ogv": "node scripts/copy-ogv.mjs",
-    "postinstall": "node scripts/copy-ogv.mjs",
+    "copy-ffmpeg": "node scripts/copy-ffmpeg.mjs",
+    "postinstall": "node scripts/copy-ogv.mjs && node scripts/copy-ffmpeg.mjs",
     "test:choicer-parse": "node scripts/test-choicer-parse.mjs",
     "ingest-pack": "node scripts/ingest-choicer-pack.mjs"
   },
   "dependencies": {
+    "@ffmpeg/core": "^0.12.10",
+    "@ffmpeg/ffmpeg": "^0.12.15",
+    "@ffmpeg/util": "^0.12.2",
     "@radix-ui/react-slot": "^1.3.3",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",

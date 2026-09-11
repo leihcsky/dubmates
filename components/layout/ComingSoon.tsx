@@ -1,8 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { Link } from "@/i18n/navigation";
-import { Button } from "@/components/ui/button";
+import { ButtonLink } from "@/components/ui/button-link";
 
 export function ComingSoonBanner() {
   const t = useTranslations("comingSoon");
@@ -14,11 +13,9 @@ export function ComingSoonBanner() {
           <p className="font-display text-sm text-[#b88200]">{t("title")}</p>
           <p className="text-sm text-muted">{t("body")}</p>
         </div>
-        <Button asChild size="sm">
-          <Link href="/" locale="en">
-            {t("cta")}
-          </Link>
-        </Button>
+        <ButtonLink href="/" locale="en" size="sm">
+          {t("cta")}
+        </ButtonLink>
       </div>
     </div>
   );
@@ -32,11 +29,9 @@ export function StudioClosed() {
     <main className="mx-auto max-w-xl px-4 py-24 text-center">
       <h1 className="font-display text-3xl">{t("comingSoon")}</h1>
       <p className="mt-4 text-muted">{soon("body")}</p>
-      <Button asChild className="mt-8">
-        <Link href="/" locale="en">
-          {soon("cta")}
-        </Link>
-      </Button>
+      <ButtonLink href="/" locale="en" className="mt-8">
+        {soon("cta")}
+      </ButtonLink>
     </main>
   );
 }

@@ -13,7 +13,7 @@ export interface ExportOptions {
 }
 
 const BRAND_NAME = "Dubmates";
-const BRAND_DOMAIN = "dubmates.com";
+const BRAND_DOMAIN = "dubmates.org";
 const END_CARD_MS = 2500;
 
 function drawCornerWatermark(ctx: CanvasRenderingContext2D, width: number, height: number) {
@@ -65,22 +65,17 @@ function drawEndCard(ctx: CanvasRenderingContext2D, width: number, height: numbe
   ctx.fillRect(0, 0, width, height);
 
   const titleSize = Math.max(28, Math.round(width * 0.055));
-  const subSize = Math.max(16, Math.round(width * 0.028));
   const domainSize = Math.max(18, Math.round(width * 0.032));
 
   ctx.textAlign = "center";
   ctx.textBaseline = "middle";
   ctx.fillStyle = "#ffffff";
   ctx.font = `700 ${titleSize}px system-ui, sans-serif`;
-  ctx.fillText(BRAND_NAME, width / 2, height / 2 - titleSize * 0.55);
-
-  ctx.fillStyle = "rgba(255, 255, 255, 0.78)";
-  ctx.font = `500 ${subSize}px system-ui, sans-serif`;
-  ctx.fillText("Doublé avec Dubmates", width / 2, height / 2 + subSize * 0.35);
+  ctx.fillText(BRAND_NAME, width / 2, height / 2 - domainSize * 0.35);
 
   ctx.fillStyle = "#ffc23d";
   ctx.font = `700 ${domainSize}px system-ui, sans-serif`;
-  ctx.fillText(BRAND_DOMAIN, width / 2, height / 2 + subSize * 0.35 + domainSize * 1.35);
+  ctx.fillText(BRAND_DOMAIN, width / 2, height / 2 + titleSize * 0.55);
   ctx.restore();
 }
 
@@ -311,12 +306,15 @@ export async function exportDub(options: ExportOptions) {
   canvas.remove();
   cleanup();
 
+  track("export_success", { fileBase: options.fileBase });
+  return blob;
+}
+
+export function downloadBlob(blob: Blob, filename: string) {
   const url = URL.createObjectURL(blob);
   const anchor = document.createElement("a");
   anchor.href = url;
-  anchor.download = `${options.fileBase}.webm`;
+  anchor.download = filename;
   anchor.click();
   window.setTimeout(() => URL.revokeObjectURL(url), 4000);
-  track("export_success", { fileBase: options.fileBase });
-  return blob;
 }

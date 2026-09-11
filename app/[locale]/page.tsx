@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
-import { Button } from "@/components/ui/button";
+import { ButtonLink } from "@/components/ui/button-link";
 import { HomePlayArena, type CatalogPackOption } from "@/components/home/HomePlayArena";
 import {
   isStudioLocale,
@@ -143,9 +143,7 @@ export default async function HomePage({ params }: Props) {
           ))}
         </ol>
         <div className="mt-6 flex flex-wrap items-center gap-3">
-          <Button asChild>
-            <Link href="/#play">{t("ctaPlay")}</Link>
-          </Button>
+          <ButtonLink href="/#play">{t("ctaPlay")}</ButtonLink>
           <Link href="/packs" className="text-sm font-semibold text-sky hover:underline">
             {t("packsLink")}
           </Link>
@@ -275,9 +273,7 @@ export default async function HomePage({ params }: Props) {
           </table>
         </div>
         <div className="mt-6">
-          <Button asChild>
-            <Link href="/#play">{t("cvCta")}</Link>
-          </Button>
+          <ButtonLink href="/#play">{t("cvCta")}</ButtonLink>
         </div>
       </div>
     </section>
@@ -296,9 +292,7 @@ export default async function HomePage({ params }: Props) {
           ))}
         </dl>
         <div className="mt-8 flex flex-wrap items-center gap-3">
-          <Button asChild>
-            <Link href="/#play">{t("ctaPlay")}</Link>
-          </Button>
+          <ButtonLink href="/#play">{t("ctaPlay")}</ButtonLink>
           <Link href="/comment-jouer" className="text-sm font-semibold text-sky hover:underline">
             {t("moreHow")}
           </Link>

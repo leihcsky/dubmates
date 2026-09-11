@@ -3,8 +3,8 @@
 import { Suspense, useCallback, useEffect, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { useTranslations } from "next-intl";
-import { Link } from "@/i18n/navigation";
 import { Button } from "@/components/ui/button";
+import { ButtonLink } from "@/components/ui/button-link";
 import { StudioApp } from "@/components/studio/StudioApp";
 import { track } from "@/lib/analytics";
 import {
@@ -182,11 +182,9 @@ function HomePlayArenaInner({ playable, defaultPack, catalog }: Props) {
         <div className="rounded-[28px] bg-surface p-8 text-center card-shadow">
           <p className="font-display text-2xl">{t("soonTitle")}</p>
           <p className="mt-3 text-muted">{t("soonBody")}</p>
-          <Button asChild className="mt-6">
-            <Link href="/" locale="en">
-              {t("soonCta")}
-            </Link>
-          </Button>
+          <ButtonLink href="/" locale="en" className="mt-6">
+            {t("soonCta")}
+          </ButtonLink>
         </div>
       </section>
     );
@@ -334,9 +332,9 @@ function HomePlayArenaInner({ playable, defaultPack, catalog }: Props) {
             >
               {busy ? tImport("busy") : t("importCta")}
             </Button>
-            <Button asChild variant="ghost" size="sm">
-              <Link href="/packs">{t("browsePacks")}</Link>
-            </Button>
+            <ButtonLink href="/packs" variant="ghost" size="sm">
+              {t("browsePacks")}
+            </ButtonLink>
           </div>
           {error ? <p className="text-sm text-danger">{error}</p> : null}
           {status ? <p className="text-sm text-muted">{status}</p> : null}
