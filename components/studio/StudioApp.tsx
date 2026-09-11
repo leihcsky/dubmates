@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { ButtonLink } from "@/components/ui/button-link";
 import { SceneVideo, type SceneVideoHandle } from "@/components/studio/SceneVideo";
 import { WaveformCompare } from "@/components/studio/WaveformCompare";
+import { VideoPreviewDialog } from "@/components/media/VideoPreviewDialog";
 import { track } from "@/lib/analytics";
 import { recordOnce, requestMicrophone } from "@/lib/audio/recorder";
 import { speakLine } from "@/lib/audio/speech";
@@ -125,6 +126,7 @@ function StudioAppInner({
   const [exportStage, setExportStage] = useState<"recording" | "converting" | null>(null);
   const [exportError, setExportError] = useState<string | null>(null);
   const [cachedWebm, setCachedWebm] = useState<{ fileBase: string; blob: Blob } | null>(null);
+  const [videoPreviewOpen, setVideoPreviewOpen] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [waveProgress, setWaveProgress] = useState(0);
   const [score, setScore] = useState<DubScoreBreakdown | null>(null);
@@ -536,6 +538,20 @@ function StudioAppInner({
     }
   }
 
+  function openVideoPreview() {
+    if (!scene.videoUrl || phase === "recording") return;
+    mixRef.current?.stop();
+    window.speechSynthesis?.cancel();
+    videoRef.current?.pause();
+    setWaveProgress(0);
+    setVideoPreviewOpen(true);
+    track("watch_original", { slug: pack.slug });
+  }
+
+  function closeVideoPreview() {
+    setVideoPreviewOpen(false);
+  }
+
   async function fillTestTakes() {
     const next: Record<string, Blob> = {};
     for (const [lineIndex, item] of scene.lines.entries()) {
@@ -592,6 +608,14 @@ function StudioAppInner({
                 {t("importPack")}
               </Button>
             ) : null}
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={openVideoPreview}
+              disabled={!scene.videoUrl || phase === "recording"}
+            >
+              {t("watchVideo")}
+            </Button>
             <Button variant="outline" size="sm" onClick={() => void toggleFullscreen()}>
               {isFullscreen ? t("exitFullscreen") : t("fullscreen")}
             </Button>
@@ -848,6 +872,16 @@ function StudioAppInner({
             Fill test takes
           </Button>
         </div>
+      ) : null}
+
+      {videoPreviewOpen && scene.videoUrl ? (
+        <VideoPreviewDialog
+          title={pack.title}
+          videoUrl={scene.videoUrl}
+          videoMime={scene.videoMime}
+          closeLabel={t("closePreview")}
+          onClose={closeVideoPreview}
+        />
       ) : null}
     </div>
   );

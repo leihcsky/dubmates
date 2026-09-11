@@ -25,6 +25,8 @@ type Props = {
   mime?: string;
   className?: string;
   poster?: string;
+  controls?: boolean;
+  autoPlay?: boolean;
 };
 
 function needsOgv(mime?: string, src?: string) {
@@ -33,7 +35,7 @@ function needsOgv(mime?: string, src?: string) {
 }
 
 export const SceneVideo = forwardRef<SceneVideoHandle, Props>(function SceneVideo(
-  { src, mime, className, poster },
+  { src, mime, className, poster, controls = false, autoPlay = false },
   ref,
 ) {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -58,14 +60,21 @@ export const SceneVideo = forwardRef<SceneVideoHandle, Props>(function SceneVide
         if (cancelled || !hostRef.current) return;
         player = new ogv.OGVPlayer({
           wasm: true,
-          // Keep UI chrome off — we drive playback from Studio controls.
         }) as unknown as HTMLVideoElement;
         player.className = className ?? "aspect-video w-full bg-black";
         player.setAttribute("playsinline", "true");
+        if (controls) player.setAttribute("controls", "true");
         player.src = src;
         hostRef.current.replaceChildren(player);
         ogvRef.current = player;
         setOgvError(null);
+        if (autoPlay) {
+          try {
+            await player.play();
+          } catch {
+            // ignore autoplay blocks
+          }
+        }
       } catch {
         if (!cancelled) {
           setOgvError("Impossible de décoder la vidéo OGV dans ce navigateur.");
@@ -88,7 +97,7 @@ export const SceneVideo = forwardRef<SceneVideoHandle, Props>(function SceneVide
       ogvRef.current = null;
       if (hostRef.current) hostRef.current.replaceChildren();
     };
-  }, [useOgv, src, className]);
+  }, [useOgv, src, className, controls, autoPlay]);
 
   useImperativeHandle(ref, () => {
     const getMedia = () => (useOgv ? ogvRef.current : videoRef.current);
@@ -143,6 +152,8 @@ export const SceneVideo = forwardRef<SceneVideoHandle, Props>(function SceneVide
       className={className ?? "aspect-video w-full bg-black"}
       playsInline
       preload="auto"
+      controls={controls}
+      autoPlay={autoPlay}
     />
   );
 });

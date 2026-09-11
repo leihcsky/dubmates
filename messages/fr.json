@@ -213,6 +213,8 @@
     "importPack": "Importer",
     "fullscreen": "Plein écran",
     "exitFullscreen": "Quitter",
+    "watchVideo": "Voir la vidéo",
+    "closePreview": "Fermer",
     "onClip": "Clip {current} / {total}",
     "takesProgress": "{done} / {total} prises",
     "playTake": "Ma prise",
