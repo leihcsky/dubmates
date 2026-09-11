@@ -9,6 +9,7 @@ import type {
   ResolvedPack,
   ResolvedScene,
 } from "@/lib/pack-types";
+import { packAssetUrl } from "@/lib/utils";
 
 /** Community Dub Packs adapted for the browser catalog. First item is the homepage default. */
 const playable: DubPack[] = [
@@ -39,27 +40,25 @@ export function isPackPlayable(pack: DubPack) {
 }
 
 function resolveScene(packSlug: string, scene: PackScene): ResolvedScene {
-  const base = `/packs/${packSlug}`;
   const promptUrls: Record<string, string> = {};
   for (const line of scene.lines) {
     if (line.prompt) {
-      promptUrls[line.id] = `${base}/${line.prompt}`;
+      promptUrls[line.id] = packAssetUrl(packSlug, line.prompt);
     }
   }
   return {
     ...scene,
-    videoUrl: scene.video ? `${base}/${scene.video}` : "",
-    thumbnailUrl: scene.thumbnail ? `${base}/${scene.thumbnail}` : "",
-    backingUrl: scene.backing ? `${base}/${scene.backing}` : undefined,
+    videoUrl: scene.video ? packAssetUrl(packSlug, scene.video) : "",
+    thumbnailUrl: scene.thumbnail ? packAssetUrl(packSlug, scene.thumbnail) : "",
+    backingUrl: scene.backing ? packAssetUrl(packSlug, scene.backing) : undefined,
     promptUrls: Object.keys(promptUrls).length ? promptUrls : undefined,
   };
 }
 
 export function resolvePack(pack: DubPack): ResolvedPack {
-  const base = `/packs/${pack.slug}`;
   return {
     ...pack,
-    thumbnailUrl: pack.thumbnail ? `${base}/${pack.thumbnail}` : "",
+    thumbnailUrl: pack.thumbnail ? packAssetUrl(pack.slug, pack.thumbnail) : "",
     scenes: pack.scenes.map((scene) => resolveScene(pack.slug, scene)),
   };
 }

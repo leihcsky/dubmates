@@ -43,6 +43,9 @@ yarn-error.log*
 /public/ogv
 /public/ffmpeg
 
+# Official pack media lives on R2 (cdn.dubmates.org); keep local copies optional
+/public/packs
+
 # local pack conversion scratch
 /tmp
 

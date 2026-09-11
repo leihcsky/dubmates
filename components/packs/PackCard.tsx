@@ -4,7 +4,7 @@ import { useEffect, useId, useState } from "react";
 import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { ButtonLink } from "@/components/ui/button-link";
-import { formatDuration } from "@/lib/utils";
+import { formatDuration, packAssetUrl } from "@/lib/utils";
 import { getPackDuration, isPackPlayable } from "@/lib/packs";
 import type { DubPack } from "@/lib/pack-types";
 
@@ -20,8 +20,11 @@ export function PackCard({
   const [previewOpen, setPreviewOpen] = useState(false);
   const titleId = useId();
   const previewScene = pack.scenes.find((scene) => Boolean(scene.video));
-  const previewUrl = previewScene
-    ? `/packs/${pack.slug}/${previewScene.video}`
+  const previewUrl = previewScene?.video
+    ? packAssetUrl(pack.slug, previewScene.video)
+    : null;
+  const thumbnailUrl = pack.thumbnail
+    ? packAssetUrl(pack.slug, pack.thumbnail)
     : null;
   const canPreview = Boolean(previewUrl);
 
@@ -29,10 +32,10 @@ export function PackCard({
     <>
       <article className="overflow-hidden rounded-[18px] bg-surface p-2.5 card-shadow">
         <div className="relative aspect-video overflow-hidden rounded-[14px] bg-surface-2">
-          {pack.thumbnail ? (
+          {thumbnailUrl ? (
             // eslint-disable-next-line @next/next/no-img-element
             <img
-              src={`/packs/${pack.slug}/${pack.thumbnail}`}
+              src={thumbnailUrl}
               alt={pack.title}
               className="h-full w-full object-cover"
             />
