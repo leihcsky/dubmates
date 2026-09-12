@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { loadArrayBuffer } from "@/lib/playback/scene-audio";
 import { cn } from "@/lib/utils";
 
 type Props = {
@@ -19,8 +20,7 @@ const BAR_COUNT = 64;
 async function peaksFromUrl(url: string, bars: number) {
   const ctx = new AudioContext();
   try {
-    const response = await fetch(url);
-    const buffer = await ctx.decodeAudioData(await response.arrayBuffer());
+    const buffer = await ctx.decodeAudioData(await loadArrayBuffer(url));
     return samplePeaks(buffer, bars);
   } finally {
     await ctx.close();

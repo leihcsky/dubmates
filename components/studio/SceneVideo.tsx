@@ -186,7 +186,11 @@ export const SceneVideo = forwardRef<SceneVideoHandle, Props>(function SceneVide
       if (readyTimer) window.clearTimeout(readyTimer);
       if (player) {
         try {
-          player.pause();
+          // `stop()` also closes the decoder worker and audio feeder, which a
+          // bare pause() leaves running until GC.
+          const ogvPlayer = player as HTMLVideoElement & { stop?: () => void };
+          if (typeof ogvPlayer.stop === "function") ogvPlayer.stop();
+          else player.pause();
         } catch {
           // ignore
         }
