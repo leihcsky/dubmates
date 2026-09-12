@@ -315,7 +315,7 @@
     "privacyParagraphs": [
       "Dubmates graba tu voz en el navegador cuando doblas. En modo solo, las tomas se guardan en local (IndexedDB) en este dispositivo para reescuchar, terminar un pack y exportar.",
       "No subimos tu audio a servidores de Dubmates para jugar, revisar o descargar. Vaciar los datos del sitio en el navegador borra las tomas locales.",
-      "No se requiere cuenta para el juego básico. Si activamos analítica (p. ej. GA4), solo mediremos eventos de producto — nunca el audio.",
+      "No se requiere cuenta para el juego básico. Usamos Google Analytics (GA4) para medir eventos de producto (páginas vistas, clics) — nunca el audio.",
       "El navegador puede pedir permiso de micrófono. Puedes revocarlo en los ajustes. Los ZIP importados también permanecen en el navegador hasta que los exportes o borres.",
       "Si nos escribes por correo, usamos el mensaje solo para responder y gestionar la solicitud."
     ],

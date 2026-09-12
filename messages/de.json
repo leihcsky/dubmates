@@ -315,7 +315,7 @@
     "privacyParagraphs": [
       "Dubmates nimmt deine Stimme im Browser auf, wenn du synchronisierst. Im Solo-Modus liegen Takes lokal (IndexedDB) auf diesem Gerät zum Anhören, Beenden und Exportieren.",
       "Wir laden dein Audio nicht auf Dubmates-Server hoch, um zu spielen, anzusehen oder herunterzuladen. Website-Daten im Browser löschen entfernt lokale Takes.",
-      "Für das Kernspiel braucht es kein Konto. Falls später Analytics (z. B. GA4) aktiv ist, zählen wir nur Produkt-Events — nie die Stimme.",
+      "Für das Kernspiel braucht es kein Konto. Wir nutzen Google Analytics (GA4) für Produkt-Events (Seitenaufrufe, Klicks) — nie die Stimme.",
       "Der Browser kann Mikrofonzugriff anfragen. Du kannst ihn in den Einstellungen widerrufen. Importierte ZIPs bleiben ebenfalls im Browser, bis du sie exportierst oder löschst.",
       "Schreibst du uns per E-Mail, nutzen wir die Nachricht nur zur Antwort und Bearbeitung."
     ],

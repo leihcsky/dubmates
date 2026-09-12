@@ -315,7 +315,7 @@
     "privacyParagraphs": [
       "Dubmates enregistre ta voix dans le navigateur quand tu doubles. En solo, les prises sont stockées localement (IndexedDB) sur cet appareil pour rejouer, finir un pack et exporter.",
       "Nous n’envoyons pas ton audio sur les serveurs Dubmates pour jouer, revoir ou télécharger. Vider les données du site dans le navigateur efface les prises locales.",
-      "Aucun compte n’est requis pour le jeu de base. Si un outil d’analytics (ex. GA4) est activé plus tard, seuls des événements produit sont mesurés — jamais l’audio.",
+      "Aucun compte n’est requis pour le jeu de base. Nous utilisons Google Analytics (GA4) pour mesurer des événements produit (pages vues, clics) — jamais l’audio.",
       "Le navigateur peut demander l’accès au micro. Tu peux le révoquer dans les réglages. Les ZIP importés restent aussi dans ton navigateur tant que tu ne les exportes ou ne les supprimes pas.",
       "Si tu nous écris par e-mail, nous utilisons le message uniquement pour répondre et traiter la demande."
     ],

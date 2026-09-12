@@ -3,6 +3,7 @@ import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
 import { Manrope, Unbounded } from "next/font/google";
 import { notFound } from "next/navigation";
+import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics";
 import { ComingSoonBanner } from "@/components/layout/ComingSoon";
 import { SiteFooter, SiteHeader } from "@/components/layout/SiteChrome";
 import { isStudioLocale, localeLanguageAlternates, localizedUrlPath, routing } from "@/i18n/routing";
@@ -97,6 +98,7 @@ export default async function LocaleLayout({ children, params }: Props) {
             <SiteFooter />
           </div>
         </NextIntlClientProvider>
+        <GoogleAnalytics />
       </body>
     </html>
   );

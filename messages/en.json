@@ -315,7 +315,7 @@
     "privacyParagraphs": [
       "Dubmates records your voice in the browser when you choose to dub. In solo mode, takes are stored locally (IndexedDB) on this device so you can replay, finish a pack, and export a video.",
       "We do not upload your audio to Dubmates servers to play, review, or download. Clearing this site’s data in your browser deletes local takes.",
-      "No account is required to use the core game. If we enable analytics later (for example GA4), we only measure product events such as page views or button clicks — never your voice recordings.",
+      "No account is required to use the core game. We use Google Analytics (GA4) to measure product events such as page views or button clicks — never your voice recordings.",
       "The browser may ask for microphone permission. You can revoke it anytime in your browser settings. Imported ZIP packs and their videos also stay in your browser unless you export or delete them.",
       "If you contact us by email, we use that message only to respond and handle the request."
     ],
