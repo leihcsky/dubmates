@@ -37,6 +37,10 @@ export function getPackDuration(pack: DubPack) {
   return pack.scenes.reduce((sum, scene) => sum + scene.duration, 0);
 }
 
+export function getPackLineCount(pack: DubPack) {
+  return pack.scenes.reduce((sum, scene) => sum + scene.lines.length, 0);
+}
+
 export function isPackPlayable(pack: DubPack) {
   return !pack.comingSoon && pack.scenes.some((scene) => Boolean(scene.video));
 }

@@ -7,7 +7,7 @@ import { ButtonLink } from "@/components/ui/button-link";
 import { VideoPreviewDialog } from "@/components/media/VideoPreviewDialog";
 import { buildSceneAudioTracks } from "@/lib/playback/scene-audio";
 import { formatDuration, packAssetUrl } from "@/lib/utils";
-import { getPackDuration, isPackPlayable } from "@/lib/packs";
+import { getPackDuration, getPackLineCount, isPackPlayable } from "@/lib/packs";
 import type { DubPack } from "@/lib/pack-types";
 
 export function PackCard({
@@ -69,9 +69,12 @@ export function PackCard({
         <div className="flex flex-1 flex-col gap-3 p-3">
           <p className="text-xs uppercase tracking-wide text-muted">{pack.category}</p>
           <h3 className="font-display text-xl">{pack.title}</h3>
+          {pack.description ? (
+            <p className="text-sm leading-relaxed text-muted">{pack.description}</p>
+          ) : null}
           <p className="text-sm text-muted">
             {formatDuration(getPackDuration(pack))} ·{" "}
-            {t("sceneCount", { count: pack.scenes.length })}
+            {t("lineCount", { count: getPackLineCount(pack) })}
           </p>
           {canPlay ? (
             <div className="mt-auto flex flex-col gap-2 sm:flex-row">
