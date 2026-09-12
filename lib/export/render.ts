@@ -1,5 +1,6 @@
 import type { DialogueLine } from "@/lib/pack-types";
 import { track } from "@/lib/analytics";
+import { loadArrayBuffer } from "@/lib/playback/scene-audio";
 
 export interface ExportOptions {
   videoUrl: string;
@@ -211,8 +212,7 @@ export async function exportDub(options: ExportOptions) {
 
   if (options.backingUrl) {
     try {
-      const response = await fetch(options.backingUrl);
-      const buffer = await decodeBlob(audioCtx, await response.blob());
+      const buffer = await audioCtx.decodeAudioData(await loadArrayBuffer(options.backingUrl));
       backingSource = audioCtx.createBufferSource();
       backingSource.buffer = buffer;
       const gain = audioCtx.createGain();

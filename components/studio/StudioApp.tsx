@@ -8,6 +8,7 @@ import { ButtonLink } from "@/components/ui/button-link";
 import { SceneVideo, type SceneVideoHandle } from "@/components/studio/SceneVideo";
 import { WaveformCompare } from "@/components/studio/WaveformCompare";
 import { VideoPreviewDialog } from "@/components/media/VideoPreviewDialog";
+import { buildSceneAudioTracks } from "@/lib/playback/scene-audio";
 import { track } from "@/lib/analytics";
 import { recordOnce, requestMicrophone } from "@/lib/audio/recorder";
 import { speakLine } from "@/lib/audio/speech";
@@ -146,6 +147,8 @@ function StudioAppInner({
     : undefined;
   const waveOriginalUrl = isFree ? undefined : promptUrl;
   const doneCount = scene.lines.filter((item) => takes[item.id]).length;
+  // Pack videos are silent; the preview needs the backing bed + original lines.
+  const previewAudioTracks = useMemo(() => buildSceneAudioTracks(scene), [scene]);
 
   useEffect(() => {
     setIndex(0);
@@ -542,6 +545,7 @@ function StudioAppInner({
     if (!scene.videoUrl || phase === "recording") return;
     mixRef.current?.stop();
     window.speechSynthesis?.cancel();
+    // Release studio OGV / Web Audio before mounting the preview player.
     videoRef.current?.pause();
     setWaveProgress(0);
     setVideoPreviewOpen(true);
@@ -624,21 +628,26 @@ function StudioAppInner({
 
         <div
           className={cn(
-            "relative min-h-0 bg-black",
-            isFullscreen ? "flex-1" : "max-h-[min(42vh,420px)]",
+            "relative min-h-0 w-full bg-black",
+            // `w-full` matters: without a definite width, `max-h` transfers through
+            // `aspect-video` into a max-width and shrinks the frame.
+            isFullscreen ? "flex-1" : "aspect-video max-h-[min(42vh,420px)]",
           )}
         >
-          <SceneVideo
-            ref={videoRef}
-            src={scene.videoUrl}
-            mime={scene.videoMime}
-            poster={scene.thumbnailUrl || undefined}
-            className={cn(
-              "h-full w-full bg-black object-contain",
-              !isFullscreen && "aspect-video max-h-[min(42vh,420px)]",
-            )}
-          />
-          {phase !== "results" && line ? (
+          {videoPreviewOpen ? (
+            <div className="h-full w-full bg-black" aria-hidden />
+          ) : (
+            <SceneVideo
+              key={scene.videoUrl}
+              ref={videoRef}
+              src={scene.videoUrl}
+              mime={scene.videoMime}
+              poster={scene.thumbnailUrl || undefined}
+              hasAudioTrackHint={scene.videoHasAudio}
+              className="h-full w-full"
+            />
+          )}
+          {phase !== "results" && line && !videoPreviewOpen ? (
             <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/45 to-transparent px-3 pb-3 pt-10">
               <div className="mb-1 flex items-center justify-between gap-2 text-[11px] font-semibold uppercase tracking-wide text-white/75">
                 <span>{t("onClip", { current: index + 1, total: scene.lines.length })}</span>
@@ -879,6 +888,9 @@ function StudioAppInner({
           title={pack.title}
           videoUrl={scene.videoUrl}
           videoMime={scene.videoMime}
+          durationHint={scene.duration}
+          audioTracks={previewAudioTracks}
+          videoHasAudio={scene.videoHasAudio}
           closeLabel={t("closePreview")}
           onClose={closeVideoPreview}
         />

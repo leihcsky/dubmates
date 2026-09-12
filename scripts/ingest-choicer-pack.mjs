@@ -9,6 +9,7 @@ import {
   createWriteStream,
   mkdirSync,
   readFileSync,
+  renameSync,
   unlinkSync,
   writeFileSync,
   existsSync,
@@ -118,6 +119,27 @@ function runFfmpeg(args) {
   }
 }
 
+function hasAudioStream(path) {
+  const result = spawnSync(
+    "ffprobe",
+    ["-v", "error", "-select_streams", "a", "-show_entries", "stream=index", "-of", "csv=p=0", path],
+    { encoding: "utf8" },
+  );
+  return Boolean(result.stdout?.trim());
+}
+
+/** Transcode any audio container to MP3 for Safari-friendly catalog packs. */
+function toMp3(inputPath, outputPath) {
+  runFfmpeg(["-y", "-i", inputPath, "-codec:a", "libmp3lame", "-q:a", "4", outputPath]);
+  if (inputPath !== outputPath) {
+    try {
+      unlinkSync(inputPath);
+    } catch {
+      // ignore
+    }
+  }
+}
+
 function probeDuration(filePath) {
   const result = spawnSync(
     "ffprobe",
@@ -185,6 +207,9 @@ async function main() {
     "+faststart",
     outVideo,
   ]);
+  // Some Dub Pack videos are silent; the site mixes backing + prompts for those.
+  const videoHasAudio = hasAudioStream(tmpVideo);
+  console.log(`[${slug}] video audio track: ${videoHasAudio ? "yes" : "no"}`);
   try {
     unlinkSync(tmpVideo);
   } catch {
@@ -196,8 +221,15 @@ async function main() {
   );
   let backingFile;
   if (backingPath) {
-    backingFile = `backing${extname(backingPath).toLowerCase() || ".mp3"}`;
-    await writeEntry(zip, backingPath, join(pubDir, backingFile));
+    const srcExt = extname(backingPath).toLowerCase() || ".mp3";
+    const srcName = `_backing_src${srcExt}`;
+    await writeEntry(zip, backingPath, join(pubDir, srcName));
+    backingFile = "backing.mp3";
+    if (srcExt === ".mp3") {
+      renameSync(join(pubDir, srcName), join(pubDir, backingFile));
+    } else {
+      toMp3(join(pubDir, srcName), join(pubDir, backingFile));
+    }
   }
 
   const iconPath =
@@ -282,8 +314,15 @@ async function main() {
       });
     }
 
-    const promptName = `prompt_${String(i + 1).padStart(2, "0")}${draft.ext}`;
-    await writeEntry(zip, draft.audioPath, join(pubDir, promptName));
+    const srcExt = draft.ext.toLowerCase() || ".mp3";
+    const srcName = `prompt_${String(i + 1).padStart(2, "0")}_src${srcExt}`;
+    const promptName = `prompt_${String(i + 1).padStart(2, "0")}.mp3`;
+    await writeEntry(zip, draft.audioPath, join(pubDir, srcName));
+    if (srcExt === ".mp3") {
+      renameSync(join(pubDir, srcName), join(pubDir, promptName));
+    } else {
+      toMp3(join(pubDir, srcName), join(pubDir, promptName));
+    }
     const duration = probeDuration(join(pubDir, promptName));
     const nextStart = drafts[i + 1]?.start;
     const naturalEnd = draft.start + duration;
@@ -323,6 +362,7 @@ async function main() {
         duration: Number(duration.toFixed(2)),
         ...(thumbnail ? { thumbnail } : {}),
         video: "video.mp4",
+        videoHasAudio,
         ...(backingFile ? { backing: backingFile } : {}),
         characters: [...characters.values()],
         lines,

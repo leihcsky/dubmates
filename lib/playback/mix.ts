@@ -1,4 +1,5 @@
 import type { DialogueLine } from "@/lib/pack-types";
+import { loadArrayBuffer } from "@/lib/playback/scene-audio";
 
 export interface MixHandle {
   stop: () => void;
@@ -23,8 +24,7 @@ export async function playDub(options: {
 
   if (options.backingUrl) {
     try {
-      const response = await fetch(options.backingUrl);
-      const buffer = await decodeBlob(ctx, await response.blob());
+      const buffer = await ctx.decodeAudioData(await loadArrayBuffer(options.backingUrl));
       const source = ctx.createBufferSource();
       source.buffer = buffer;
       const gain = ctx.createGain();

@@ -1,10 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { ButtonLink } from "@/components/ui/button-link";
 import { VideoPreviewDialog } from "@/components/media/VideoPreviewDialog";
+import { buildSceneAudioTracks } from "@/lib/playback/scene-audio";
 import { formatDuration, packAssetUrl } from "@/lib/utils";
 import { getPackDuration, isPackPlayable } from "@/lib/packs";
 import type { DubPack } from "@/lib/pack-types";
@@ -27,6 +28,21 @@ export function PackCard({
     ? packAssetUrl(pack.slug, pack.thumbnail)
     : null;
   const canPreview = Boolean(previewUrl);
+  // Pack videos ship without an audio track, so mix in backing + line prompts.
+  const previewAudioTracks = useMemo(() => {
+    if (!previewScene) return [];
+    const promptUrls: Record<string, string> = {};
+    for (const line of previewScene.lines) {
+      if (line.prompt) promptUrls[line.id] = packAssetUrl(pack.slug, line.prompt);
+    }
+    return buildSceneAudioTracks({
+      backingUrl: previewScene.backing
+        ? packAssetUrl(pack.slug, previewScene.backing)
+        : undefined,
+      lines: previewScene.lines,
+      promptUrls,
+    });
+  }, [pack.slug, previewScene]);
 
   return (
     <>
@@ -84,6 +100,9 @@ export function PackCard({
         <VideoPreviewDialog
           title={pack.title}
           videoUrl={previewUrl}
+          durationHint={previewScene?.duration}
+          audioTracks={previewAudioTracks}
+          videoHasAudio={previewScene?.videoHasAudio}
           closeLabel={t("close")}
           onClose={() => setPreviewOpen(false)}
         />

@@ -13,6 +13,7 @@
       "duration": 52.93,
       "thumbnail": "thumbnail.png",
       "video": "video.mp4",
+      "videoHasAudio": true,
       "backing": "backing.mp3",
       "characters": [
         {

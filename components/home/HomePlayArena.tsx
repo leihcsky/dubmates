@@ -201,6 +201,7 @@ function HomePlayArenaInner({ playable, defaultPack, catalog }: Props) {
           onChange={(event) => void handleFile(event.target.files?.[0])}
         />
         <StudioApp
+          key={`${session.pack.id}:${session.scene.id}:${session.scene.videoUrl}`}
           pack={session.pack}
           scene={session.scene}
           embedded

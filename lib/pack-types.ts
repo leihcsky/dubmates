@@ -21,6 +21,8 @@ export interface PackScene {
   duration: number;
   thumbnail?: string;
   video: string;
+  /** Some Dub Pack videos are silent; the preview then mixes backing + prompts. */
+  videoHasAudio?: boolean;
   backing?: string;
   characters: Character[];
   lines: DialogueLine[];

@@ -1,0 +1,146 @@
+{
+  "id": "family-guy-peter-does-crack",
+  "slug": "family-guy-peter-does-crack",
+  "language": "fr",
+  "title": "Family Guy - Peter Does Crack",
+  "description": "Pack communautaire · AlyenOllie",
+  "category": "Cartoon",
+  "thumbnail": "thumbnail.png",
+  "scenes": [
+    {
+      "id": "main",
+      "title": "Family Guy - Peter Does Crack",
+      "duration": 39.85,
+      "thumbnail": "thumbnail.png",
+      "video": "video.mp4",
+      "videoHasAudio": false,
+      "backing": "backing.mp3",
+      "characters": [
+        {
+          "id": "brian",
+          "name": "Brian",
+          "color": "#D9645B"
+        },
+        {
+          "id": "peter",
+          "name": "Peter",
+          "color": "#3BA7F5"
+        }
+      ],
+      "lines": [
+        {
+          "id": "line_001",
+          "characterId": "brian",
+          "text": "Peter, what are you doing?",
+          "start": 3.829,
+          "end": 5.241,
+          "prompt": "prompt_01.mp3"
+        },
+        {
+          "id": "line_002",
+          "characterId": "peter",
+          "text": "Crack.",
+          "start": 5.261,
+          "end": 6.077,
+          "prompt": "prompt_02.mp3"
+        },
+        {
+          "id": "line_003",
+          "characterId": "brian",
+          "text": "What the fuck?!",
+          "start": 6.123,
+          "end": 7.517,
+          "prompt": "prompt_03.mp3"
+        },
+        {
+          "id": "line_004",
+          "characterId": "peter",
+          "text": "Hey, at least I'm not drinking, Brian.",
+          "start": 7.537,
+          "end": 9.035,
+          "prompt": "prompt_04.mp3"
+        },
+        {
+          "id": "line_005",
+          "characterId": "brian",
+          "text": "Yeah, this isn't exactly a good substitute. Where'd you get crack?",
+          "start": 9.055,
+          "end": 12.488,
+          "prompt": "prompt_05.mp3"
+        },
+        {
+          "id": "line_006",
+          "characterId": "peter",
+          "text": "From blacks.",
+          "start": 12.508,
+          "end": 13.428,
+          "prompt": "prompt_06.mp3"
+        },
+        {
+          "id": "line_007",
+          "characterId": "brian",
+          "text": "What?",
+          "start": 13.448,
+          "end": 13.898,
+          "prompt": "prompt_07.mp3"
+        },
+        {
+          "id": "line_008",
+          "characterId": "peter",
+          "text": "Right behind Black's Hardware Store. There's a white guy selling it.",
+          "start": 13.918,
+          "end": 16.787,
+          "prompt": "prompt_08.mp3"
+        },
+        {
+          "id": "line_009",
+          "characterId": "brian",
+          "text": "Look, Doing crack is not the way to stop drinking. You need to get to the heart of why you feel the need to drink in the first place.",
+          "start": 16.807,
+          "end": 22.927,
+          "prompt": "prompt_09.mp3"
+        },
+        {
+          "id": "line_010",
+          "characterId": "brian",
+          "text": "Look, here, this is the number of a hypnotherapist I want you to see.",
+          "start": 23.014,
+          "end": 26.487,
+          "prompt": "prompt_10.mp3"
+        },
+        {
+          "id": "line_011",
+          "characterId": "peter",
+          "text": "All right, Brian.",
+          "start": 26.507,
+          "end": 27.86,
+          "prompt": "prompt_11.mp3"
+        },
+        {
+          "id": "line_012",
+          "characterId": "brian",
+          "text": "Good.",
+          "start": 27.88,
+          "end": 28.503,
+          "prompt": "prompt_12.mp3"
+        },
+        {
+          "id": "line_013",
+          "characterId": "brian",
+          "text": "Hey, Peter, just thought I'd check on y— Oh, my God!",
+          "start": 33.486,
+          "end": 36.269,
+          "prompt": "prompt_13.mp3"
+        },
+        {
+          "id": "line_014",
+          "characterId": "peter",
+          "text": "Gov'ment came and took my baby!",
+          "start": 36.289,
+          "end": 39.347,
+          "prompt": "prompt_14.mp3"
+        }
+      ]
+    }
+  ]
+}

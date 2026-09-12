@@ -1,7 +1,8 @@
+import itsNotMyWallet from "@/content/packs/its-not-my-wallet/pack.json";
+import familyGuyPeterDoesCrack from "@/content/packs/family-guy-peter-does-crack/pack.json";
 import typeInChat from "@/content/packs/type-in-chat/pack.json";
 import electricBlanket from "@/content/packs/electric-blanket/pack.json";
 import legoBatmanSanta from "@/content/packs/lego-batman-santa/pack.json";
-import heisenburger from "@/content/packs/heisenburger/pack.json";
 import type {
   DubPack,
   PackLanguage,
@@ -13,10 +14,11 @@ import { packAssetUrl } from "@/lib/utils";
 
 /** Community Dub Packs adapted for the browser catalog. First item is the homepage default. */
 const playable: DubPack[] = [
+  itsNotMyWallet as DubPack,
+  familyGuyPeterDoesCrack as DubPack,
   typeInChat as DubPack,
   electricBlanket as DubPack,
   legoBatmanSanta as DubPack,
-  heisenburger as DubPack,
 ];
 
 export function getAllPacks(): DubPack[] {

@@ -1,0 +1,215 @@
+{
+  "id": "its-not-my-wallet",
+  "slug": "its-not-my-wallet",
+  "language": "fr",
+  "title": "Its not my wallet - Spongebob",
+  "description": "Pack communautaire · Jaystley",
+  "category": "Cartoon",
+  "thumbnail": "thumbnail.png",
+  "scenes": [
+    {
+      "id": "main",
+      "title": "Its not my wallet - Spongebob",
+      "duration": 65.1,
+      "thumbnail": "thumbnail.png",
+      "video": "video.mp4",
+      "videoHasAudio": true,
+      "backing": "backing.mp3",
+      "characters": [
+        {
+          "id": "spongebob",
+          "name": "Spongebob",
+          "color": "#D9645B"
+        },
+        {
+          "id": "man-ray",
+          "name": "Man Ray",
+          "color": "#3BA7F5"
+        },
+        {
+          "id": "patrick",
+          "name": "Patrick",
+          "color": "#3FB950"
+        }
+      ],
+      "lines": [
+        {
+          "id": "line_001",
+          "characterId": "spongebob",
+          "text": "Okay, Man Ray. Are you ready for your first day at goodness school?",
+          "start": 0.494,
+          "end": 4.985,
+          "prompt": "prompt_01.mp3"
+        },
+        {
+          "id": "line_002",
+          "characterId": "spongebob",
+          "text": "Pat, get your wallet out. Okay, goodness lesson number one. You see someone drop their wallet...",
+          "start": 6.194,
+          "end": 11.606,
+          "prompt": "prompt_02.mp3"
+        },
+        {
+          "id": "line_003",
+          "characterId": "spongebob",
+          "text": "Patrick, drop the wallet. Now, what do you do?",
+          "start": 11.626,
+          "end": 15.204,
+          "prompt": "prompt_03.mp3"
+        },
+        {
+          "id": "line_004",
+          "characterId": "man-ray",
+          "text": "Excuse me, sir! But I do believe you've dropped your wallet.",
+          "start": 15.224,
+          "end": 19.254,
+          "prompt": "prompt_04.mp3"
+        },
+        {
+          "id": "line_005",
+          "characterId": "patrick",
+          "text": "Doesn't look familiar to me.",
+          "start": 19.274,
+          "end": 21.31,
+          "prompt": "prompt_05.mp3"
+        },
+        {
+          "id": "line_006",
+          "characterId": "man-ray",
+          "text": "What? I just saw you drop it. Here.",
+          "start": 21.33,
+          "end": 24.43,
+          "prompt": "prompt_06.mp3"
+        },
+        {
+          "id": "line_007",
+          "characterId": "patrick",
+          "text": "Nope, it's not mine.",
+          "start": 24.45,
+          "end": 25.812,
+          "prompt": "prompt_07.mp3"
+        },
+        {
+          "id": "line_008",
+          "characterId": "man-ray",
+          "text": "It is yours. I... am trying to be a good person and return it to you.",
+          "start": 25.832,
+          "end": 30.535,
+          "prompt": "prompt_08.mp3"
+        },
+        {
+          "id": "line_009",
+          "characterId": "patrick",
+          "text": "Return what to who?",
+          "start": 30.555,
+          "end": 32.555,
+          "prompt": "prompt_09.mp3"
+        },
+        {
+          "id": "line_010",
+          "characterId": "man-ray",
+          "text": "Aren't you Patrick Star?",
+          "start": 34.65,
+          "end": 37.651,
+          "prompt": "prompt_10.mp3"
+        },
+        {
+          "id": "line_011",
+          "characterId": "patrick",
+          "text": "Yup.",
+          "start": 37.671,
+          "end": 38.405,
+          "prompt": "prompt_11.mp3"
+        },
+        {
+          "id": "line_012",
+          "characterId": "man-ray",
+          "text": "And this is your ID.",
+          "start": 38.425,
+          "end": 40.673,
+          "prompt": "prompt_12.mp3"
+        },
+        {
+          "id": "line_013",
+          "characterId": "patrick",
+          "text": "Yup.",
+          "start": 40.693,
+          "end": 41.276,
+          "prompt": "prompt_13.mp3"
+        },
+        {
+          "id": "line_014",
+          "characterId": "man-ray",
+          "text": "I found this ID in this wallet. And if that's the case, this must be your wallet.",
+          "start": 41.296,
+          "end": 48.72,
+          "prompt": "prompt_14.mp3"
+        },
+        {
+          "id": "line_015",
+          "characterId": "patrick",
+          "text": "That makes sense to me.",
+          "start": 48.74,
+          "end": 50.661,
+          "prompt": "prompt_15.mp3"
+        },
+        {
+          "id": "line_016",
+          "characterId": "man-ray",
+          "text": "Then take it.",
+          "start": 50.681,
+          "end": 51.857,
+          "prompt": "prompt_16.mp3"
+        },
+        {
+          "id": "line_017",
+          "characterId": "patrick",
+          "text": "It's not my wallet.",
+          "start": 51.877,
+          "end": 53.036,
+          "prompt": "prompt_17.mp3"
+        },
+        {
+          "id": "line_018",
+          "characterId": "man-ray",
+          "text": "You dim bulb! Take back your wallet or I'll rip your arms off!",
+          "start": 53.056,
+          "end": 56.424,
+          "prompt": "prompt_18.mp3"
+        },
+        {
+          "id": "line_019",
+          "characterId": "spongebob",
+          "text": "Ah-ah! Wrong.",
+          "start": 56.444,
+          "end": 58.227,
+          "prompt": "prompt_19.mp3"
+        },
+        {
+          "id": "line_020",
+          "characterId": "man-ray",
+          "text": "[Maniacal tickling laughter]",
+          "start": 58.247,
+          "end": 59.122,
+          "prompt": "prompt_20.mp3"
+        },
+        {
+          "id": "line_021",
+          "characterId": "spongebob",
+          "text": "Good people don't rip other people's arms off!",
+          "start": 59.142,
+          "end": 61.707,
+          "prompt": "prompt_21.mp3"
+        },
+        {
+          "id": "line_022",
+          "characterId": "man-ray",
+          "text": "[Maniacal tickling laughter] oh- oh sto-op",
+          "start": 61.727,
+          "end": 64.598,
+          "prompt": "prompt_22.mp3"
+        }
+      ]
+    }
+  ]
+}
