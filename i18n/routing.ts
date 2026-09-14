@@ -24,6 +24,9 @@ export const routing = defineRouting({
   defaultLocale: "en",
   /** English (default) has no `/en` prefix; other locales keep `/fr`, `/es`, `/de`. */
   localePrefix: "as-needed",
+  // Keep `/` as English. Auto-detect (Accept-Language / NEXT_LOCALE cookie)
+  // was sending dubmates.org → /fr for French-preferring browsers.
+  localeDetection: false,
 });
 
 /** Public URL path for a locale + path (path like `/packs` or ``). */
